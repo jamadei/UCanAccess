@@ -4,7 +4,7 @@ pipeline {
     stages {
 		stage('Build') {
 			steps {
-				mvn 'package -DskipTests=true'
+				 mvn 'package -DskipTests=true'
 				archiveArtifacts '**/target/*.jar'
 			}
 		}
