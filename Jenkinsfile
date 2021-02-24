@@ -5,7 +5,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				 mvn 'package -DskipTests=true'
-				archiveArtifacts '**/target/*.jar'
+				archiveArtifacts './target/*.jar'
 			}
 		}
         stage('Static Code Analysis By Sonarqube') {
