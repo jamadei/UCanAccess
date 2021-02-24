@@ -5,6 +5,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				mvn 'package -DskipTests=true'
+				archiveArtifacts '**/target/*.jar'
 			}
 		}
         stage('Static Code Analysis By Sonarqube') {
@@ -39,6 +40,7 @@ def mvn(def args) {
     // Advice: don't define M2_HOME in general. Maven will autodetect its root fine.
     // See also
     // https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/maven-and-jdk-specific-version/mavenAndJdkSpecificVersion.groovy
+    
     sh "${mvnHome}/bin/mvn ${args} --batch-mode -V -U -e -Dsurefire.useFile=false"
    
 }
